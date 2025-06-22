@@ -1,0 +1,16 @@
+# .github/workflows/blockers.yml
+name: Daily Blocker Scan
+
+on:
+  schedule:
+    - cron: '15 6 * * *'  # 09:15 Europe/Istanbul (adjust in Governance.md as needed)
+
+jobs:
+  scan-blockers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Scan for [Blocked] tasks (placeholder)
+        run: echo "Blocker scan logic to be implemented"

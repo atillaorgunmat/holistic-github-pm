@@ -1,0 +1,19 @@
+# .github/workflows/gpt-cmd.yml
+name: GPT-CMD Directive Processor
+
+on:
+  push:
+    branches:
+      - main
+    # Optionally, filter by commit message with '[GPT-CMD]'
+    # Or add workflow_dispatch for manual trigger
+
+jobs:
+  process-gpt-cmd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run GPT-CMD parser (placeholder)
+        run: echo "GPT-CMD parser to be implemented"
