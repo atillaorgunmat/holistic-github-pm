@@ -1,10 +1,18 @@
-name: GPT‑CMD Processor
+name: GPT-CMD Processor
 on:
   workflow_dispatch:
+    inputs:
+      directives:
+        description: 'JSON directives to apply (must be valid JSON)'
+        required: true
 
 jobs:
   execute:
     runs-on: ubuntu-latest
     steps:
-      - name: Placeholder
-        run: echo "GPT‑CMD handler stub – awaits parser script"
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run GPT-CMD parser
+        shell: bash
+        run: echo "${{ github.event.inputs.directives }}" | python3 scripts/parse_gpt_cmd.py
