@@ -1,49 +1,30 @@
 name: GPT-CMD Processor
 
-permissions:
-  contents: write   # <-- allows push via the default GITHUB_TOKEN
-
-
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+    paths:
+      - '.gptcmd/directive.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   execute:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Extract directive from commit message
-        shell: bash
+      - name: Run Parser
+        run: python3 scripts/parse_gpt_cmd.py < .gptcmd/directive.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Clean up directive file
         run: |
-          msg=$(git log -1 --pretty=%B)
-          echo "$msg" | sed -n '/^GPT-CMD_DIRECTIVE:/,$p' | sed '1d' > /tmp/directive.json
-
-      - name: Debug directive
-        shell: bash
-        run: |
-          echo "--- directive.json ---"
-          cat /tmp/directive.json
-
-      - name: Run parser
-        shell: bash
-        run: |
-          python3 scripts/parse_gpt_cmd.py < /tmp/directive.json
-
-      - name: Commit and push changes
-        shell: bash
-        run: |
-          if git status --porcelain | grep -q .; then
-            git config user.name "gpt-cmd-bot"
-            git config user.email "bot@users.noreply.github.com"
-            git add -A
-            git commit -m "Apply GPT-CMD directive"
-            git push origin HEAD:main
-          else
-            echo "No changes produced by directive." >&2
-            exit 1   # fail-fast rule
-          fi
-
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git rm .gptcmd/directive.json
+          git commit -m "GPT-CMD: Remove processed directive"
+          git push origin main
