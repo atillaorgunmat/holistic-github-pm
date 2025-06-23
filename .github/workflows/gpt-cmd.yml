@@ -1,5 +1,9 @@
 name: GPT-CMD Processor
 
+permissions:
+  contents: write   # <-- allows push via the default GITHUB_TOKEN
+
+
 on:
   push:
     branches:
