@@ -17,7 +17,7 @@
 - T-0010: Populate initial `FactLog.md` [Done]
 
 ## Automation Setup
-- T-0011: Implement parser logic in `parse_gpt_cmd.py` [Open]
+- T-0011: Implement parser logic in scripts/parse_gpt_cmd.py [Done]
 - T-0012: Develop automated processing in `gpt-cmd.yml` [Open]
 - T-0013: Develop daily blocker check in `blockers.yml` [Open]
 - T-0014: Develop daily summary in `summary.yml` [Open]
