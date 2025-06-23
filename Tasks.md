@@ -9,8 +9,8 @@
 - T-0004: Create `summary.yml` workflow file [Done]
 - T-0005: Create `fact_impact.yml` workflow file [Done]
 - T-0006: Create `gpt-cmd.yml` workflow file [Done]
-- T-0007: Set up `.github/ISSUE_TEMPLATE/task.yml` (optional) [Open]
-- T-0008: Create `scripts/parse_gpt_cmd.py` parser script [Open]
+- T-0007: Set up `.github/ISSUE_TEMPLATE/task.yml` (optional) [Done – Not needed]
+- T-0008: Create `scripts/parse_gpt_cmd.py` parser script [Done]
 
 ## Governance & Documentation
 - T-0009: Populate initial `Governance.md` [Done]
