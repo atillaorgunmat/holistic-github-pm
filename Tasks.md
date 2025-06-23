@@ -4,17 +4,17 @@
 - T-0001: Initialize GitHub repository [Done]
 
 ## Repository Structure
-- T-0002: Set up `.github/workflows/` directory structure [Open]
-- T-0003: Create `blockers.yml` workflow file [Open]
-- T-0004: Create `summary.yml` workflow file [Open]
-- T-0005: Create `fact_impact.yml` workflow file [Open]
-- T-0006: Create `gpt-cmd.yml` workflow file [Open]
+- T-0002: Set up `.github/workflows/` directory structure [Done]
+- T-0003: Create `blockers.yml` workflow file [Done]
+- T-0004: Create `summary.yml` workflow file [Done]
+- T-0005: Create `fact_impact.yml` workflow file [Done]
+- T-0006: Create `gpt-cmd.yml` workflow file [Done]
 - T-0007: Set up `.github/ISSUE_TEMPLATE/task.yml` (optional) [Open]
 - T-0008: Create `scripts/parse_gpt_cmd.py` parser script [Open]
 
 ## Governance & Documentation
-- T-0009: Populate initial `Governance.md` [Open]
-- T-0010: Populate initial `FactLog.md` [Open]
+- T-0009: Populate initial `Governance.md` [Done]
+- T-0010: Populate initial `FactLog.md` [Done]
 
 ## Automation Setup
 - T-0011: Implement parser logic in `parse_gpt_cmd.py` [Open]
