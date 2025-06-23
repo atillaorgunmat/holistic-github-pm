@@ -30,3 +30,4 @@
 
 ## Operational Start
 - T-0019: Begin active project work (after validations complete) [Open]
+- T-TEST: Dummy test task [Blocked]
