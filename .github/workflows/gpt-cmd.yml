@@ -1,11 +1,9 @@
-name: GPT-CMD Processor          # ← restores friendly name in sidebar
+name: GPT-CMD Processor
 
 on:
-  workflow_dispatch:            # ← REQUIRED for “Run workflow” button
-    inputs:
-      directives:
-        description: 'JSON directives to apply (must be valid JSON)'
-        required: true
+  push:
+    branches:
+      - main
 
 jobs:
   execute:
@@ -14,19 +12,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Write directives to file
+      - name: Extract directive from commit message
         shell: bash
         run: |
-          echo "${{ github.event.inputs.directives }}" > /tmp/directive.json
+          msg=$(git log -1 --pretty=%B)
+          echo "$msg" | sed -n '/^GPT-CMD_DIRECTIVE:/,$p' | sed '1d' > /tmp/directive.json
 
-      - name: Debug directives
+      - name: Debug directive
         shell: bash
         run: |
-          echo '---RAW JSON START---'
+          echo "--- directive.json ---"
           cat /tmp/directive.json
-          echo '---RAW JSON END---'
 
-      - name: Execute parser
+      - name: Run parser
         shell: bash
         run: |
           python3 scripts/parse_gpt_cmd.py < /tmp/directive.json
