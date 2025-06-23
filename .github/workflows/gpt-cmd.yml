@@ -15,4 +15,6 @@ jobs:
 
       - name: Run GPT-CMD parser
         shell: bash
-        run: echo "${{ github.event.inputs.directives }}" | python3 scripts/parse_gpt_cmd.py
+        run: |
+  printf '%s' "${{ github.event.inputs.directives }}" | python3 scripts/parse_gpt_cmd.py
+
