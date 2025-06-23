@@ -1,12 +1,29 @@
-name: Daily Blocker Scan
+name: Daily Blocker Check
+
 on:
   schedule:
-    - cron: '15 9 * * *'   # 09:15 UTC, adjust in Governance.md
+    - cron: '15 9 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
-  scan:
+  blocker_scan:
     runs-on: ubuntu-latest
     steps:
-      - name: Placeholder
-        run: echo "Blocker scan stub – to be implemented"
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Blocker Scan Script
+        run: python scripts/scan_blockers.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
