@@ -1,16 +1,12 @@
-# .github/workflows/summary.yml
-name: Daily Summary
-
+name: Daily Progress Summary
 on:
   schedule:
-    - cron: '0 6 * * *'   # 09:00 Europe/Istanbul
+    - cron: '0 9 * * *'    # 09:00 UTC
+  workflow_dispatch:
 
 jobs:
-  daily-summary:
+  summary:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Generate daily summary (placeholder)
-        run: echo "Summary logic to be implemented"
+      - name: Placeholder
+        run: echo "Summary stub – to be implemented"

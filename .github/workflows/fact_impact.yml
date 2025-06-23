@@ -1,17 +1,13 @@
-# .github/workflows/fact_impact.yml
-name: Fact Impact Check
-
+name: Fact Impact Scan
 on:
   push:
     paths:
       - 'FactLog.md'
+  workflow_dispatch:
 
 jobs:
-  check-fact-impact:
+  impact:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Scan for fact impacts (placeholder)
-        run: echo "Fact impact scan logic to be implemented"
+      - name: Placeholder
+        run: echo "Fact impact scan stub – to be implemented"
