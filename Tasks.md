@@ -24,10 +24,9 @@
 - T-0015: Develop fact-impact check in `fact_impact.yml` [Open]
 
 ## Automation Testing
-- T-0016: Validate GPT-CMD directive execution (dry run) [Open]
+- T-0016: Validate GPT-CMD directive execution (dry run) [Done]
 - T-0017: Validate daily summary workflow [Open]
 - T-0018: Validate fact-impact automation [Open]
 
 ## Operational Start
 - T-0019: Begin active project work (after validations complete) [Open]
-- T-TEST: Dummy test task [Done]
