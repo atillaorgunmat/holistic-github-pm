@@ -15,16 +15,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
+      
       - name: Run Parser
         run: python3 scripts/parse_gpt_cmd.py < .gptcmd/directive.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Clean up directive file
+      
+      - name: Commit directive results (if any) + clean up file
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git rm .gptcmd/directive.json
-          git commit -m "GPT-CMD: Remove processed directive"
-          git push origin main
+          
+          # Stage any edits made by the parser
+          if ! git diff --quiet; then
+            echo "Staging parser modifications..."
+            git add -u
+          fi
+          
+          # Always remove the directive file
+          if [ -f .gptcmd/directive.json ]; then
+            git rm .gptcmd/directive.json
+          fi
+          
+          # Commit if there’s anything staged
+          if ! git diff --cached --quiet; then
+            git commit -m "GPT-CMD: Apply directive & clean up"
+            git push origin main
+          else
+            echo "No file changes to commit."
+          fi
