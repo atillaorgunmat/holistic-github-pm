@@ -1,6 +1,7 @@
-name: GPT-CMD Processor
+name: GPT-CMD Processor          # ← restores friendly name in sidebar
+
 on:
-  workflow_dispatch:
+  workflow_dispatch:            # ← REQUIRED for “Run workflow” button
     inputs:
       directives:
         description: 'JSON directives to apply (must be valid JSON)'
@@ -16,5 +17,5 @@ jobs:
       - name: Run GPT-CMD parser
         shell: bash
         run: |
-  printf '%s' "${{ github.event.inputs.directives }}" | python3 scripts/parse_gpt_cmd.py
-
+          # printf avoids the quoting problems that echo caused
+          printf '%s' "${{ github.event.inputs.directives }}" | python3 scripts/parse_gpt_cmd.py
