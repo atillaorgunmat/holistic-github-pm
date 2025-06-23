@@ -14,8 +14,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Run GPT-CMD parser
+      - name: Write directives to file
         shell: bash
         run: |
-          # printf avoids the quoting problems that echo caused
-          printf '%s' "${{ github.event.inputs.directives }}" | python3 scripts/parse_gpt_cmd.py
+          echo "${{ github.event.inputs.directives }}" > /tmp/directive.json
+
+      - name: Debug directives
+        shell: bash
+        run: |
+          echo '---RAW JSON START---'
+          cat /tmp/directive.json
+          echo '---RAW JSON END---'
+
+      - name: Execute parser
+        shell: bash
+        run: |
+          python3 scripts/parse_gpt_cmd.py < /tmp/directive.json
