@@ -1,6 +1,0 @@
-{
-  "file": "Tasks.md",
-  "op": "UPDATE",
-  "pattern": "- T-TEST: Dummy test task \\[Blocked\\]",
-  "replacement": "- T-TEST: Dummy test task [Done]"
-}
