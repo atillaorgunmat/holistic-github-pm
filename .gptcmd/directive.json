@@ -1,1 +1,1 @@
-{}
+{"file":"Tasks.md","op":"UPDATE","pattern":"T-TEST.*","replacement":"- T-TEST: Dummy test task [Done]"}
