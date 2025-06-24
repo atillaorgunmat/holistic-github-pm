@@ -2,7 +2,7 @@ name: Daily Summary
 
 on:
   schedule:
-    - cron: '53 9 * * *'
+    - cron: '0 9 * * *'
   workflow_dispatch:
 
 jobs:
