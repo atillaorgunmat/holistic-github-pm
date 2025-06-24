@@ -7,6 +7,7 @@ on:
     branches: [ main ]
     paths:
       - '.gptcmd/*.json'
+      - '.github/workflows/gpt-cmd.yml'
   workflow_dispatch:
 
 jobs:
