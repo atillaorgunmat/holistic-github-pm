@@ -60,3 +60,17 @@ Automatically identify tasks explicitly marked `[Blocked]` in `Tasks.md` each da
      - Task IDs and descriptions.
      - Date identified (scan date).
 - If no blocked tasks are found:
+
+### ⚠️ Fact-Impact Check (**T-0015**)
+
+- **Runs on:** push to `FactLog.md` (detect new or modified facts).
+- **Logic:**  
+  1. Identify which `F##` IDs were added or changed in the latest commit.  
+  2. Scan `Tasks.md` for those `F##` references.  
+  3. For any matching task lines, append `⚠️ Fact-Impacted (since YYYY-MM-DD)` if not already present.
+- **Workflow:** `.github/workflows/fact_impact.yml` (trigger: on push to `FactLog.md` + `workflow_dispatch`).
+- **Script:** `scripts/scan_fact_impact.py`.
+- **Permissions:**
+  ```yaml
+  permissions:
+    contents: write
