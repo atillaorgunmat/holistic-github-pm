@@ -1,8 +1,0 @@
-{
-  "action": "UPDATE",
-  "target": ".github/workflows/gpt-cmd.yml",
-  "patch": {
-    "find": "run: python3 scripts/parse_gpt_cmd.py .gptcmd/\\*\\.json",
-    "replace": "run: cat .gptcmd/*.json | python3 scripts/parse_gpt_cmd.py"
-  }
-}
