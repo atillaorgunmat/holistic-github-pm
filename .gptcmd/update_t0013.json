@@ -1,0 +1,13 @@
+{
+  "action": "MULTI",
+  "directives": [
+    {
+      "action": "UPDATE",
+      "target": "Tasks.md",
+      "id": "T-0013",
+      "fields": {
+        "status": "Done"
+      }
+    }
+  ]
+}
