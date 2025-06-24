@@ -1,0 +1,8 @@
+{
+  "action": "UPDATE",
+  "target": ".github/workflows/gpt-cmd.yml",
+  "patch": {
+    "find": "paths:\\s*- '.gptcmd/directive.json'",
+    "replace": "paths:\n      - '.gptcmd/*.json'"
+  }
+}
