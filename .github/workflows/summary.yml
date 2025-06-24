@@ -10,23 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-          
+
       - name: Run summary report script
         run: python scripts/summary_report.py
-name: Daily Progress Summary
-on:
-  schedule:
-    - cron: '0 9 * * *'    # 09:00 UTC
-  workflow_dispatch:
-
-jobs:
-  summary:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Placeholder
-        run: echo "Summary stub – to be implemented"
