@@ -26,7 +26,7 @@
 ## Automation Testing
 - T-0016: Validate GPT-CMD directive execution (dry run) [Done]
 - T-0017: Validate daily summary workflow [Done]
-- T-0018: Validate fact-impact automation [Open]
+- T-0018: Validate fact-impact automation [Done]
 
 ## Operational Start
 - T-0019: Begin active project work (after validations complete) [Open]
