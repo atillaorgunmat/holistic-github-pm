@@ -15,20 +15,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Check out the repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Set up Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      # 3. Install dependencies
       - name: Install dependencies
         run: pip3 install -r requirements.txt
 
-      # 4. Pipe all .gptcmd JSONs into the parser
       - name: Execute GPT-CMD parser
-        run: cat .gptcmd/*.json | python3 scripts/parse_gpt_cmd.py
+        run: |
+          for json in .gptcmd/*.json; do
+            python3 scripts/parse_gpt_cmd.py < "$json"
+          done
