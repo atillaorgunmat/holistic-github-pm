@@ -1,0 +1,6 @@
+{
+  "file": "Tasks.md",
+  "op": "UPDATE",
+  "pattern": "- T-0013: Develop daily blocker check in `blockers.yml` \\[Open\\]",
+  "replacement": "- T-0013: Develop daily blocker check in `blockers.yml` [Done]"
+}
