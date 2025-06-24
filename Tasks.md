@@ -19,7 +19,7 @@
 ## Automation Setup
 - T-0011: Implement parser logic in scripts/parse_gpt_cmd.py [Done]
 - T-0012: Wire parser script into gpt-cmd.yml workflow [Done]
-- T-0013: Develop daily blocker check in `blockers.yml` [Open]
+- T-0013: Develop daily blocker check in `blockers.yml` [Done]
 - T-0014: Develop daily summary in `summary.yml` [Done]
 - T-0015: Develop fact-impact check in `fact_impact.yml` [Done]
 
