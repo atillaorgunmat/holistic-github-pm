@@ -2,6 +2,10 @@
 
 name: GPT-CMD
 
+# Grant the runner write permission on repo contents
+permissions:
+  contents: write
+
 on:
   push:
     branches: [ main ]
@@ -12,11 +16,16 @@ on:
 
 jobs:
   execute:
+    # Also ensure this job has write permissions
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
+          # so git push will use the GITHUB_TOKEN
           persist-credentials: true
 
       - name: Set up Python
@@ -34,8 +43,7 @@ jobs:
           done
 
       - name: Remove processed directives
-        run: |
-          rm -f gptcmd/*.json
+        run: rm -f gptcmd/*.json
 
       - name: Commit & push changes
         run: |
