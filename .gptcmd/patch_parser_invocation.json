@@ -1,0 +1,8 @@
+{
+  "action": "UPDATE",
+  "target": ".github/workflows/gpt-cmd.yml",
+  "patch": {
+    "find": "python3 scripts/parse_gpt_cmd.py < .gptcmd/directive.json",
+    "replace": "python3 scripts/parse_gpt_cmd.py .gptcmd/*.json"
+  }
+}
