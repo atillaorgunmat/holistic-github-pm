@@ -29,6 +29,6 @@ jobs:
       - name: Install dependencies
         run: pip3 install -r requirements.txt
 
-      # 4. Run the parser against all .gptcmd JSONs
+      # 4. Pipe all .gptcmd JSONs into the parser
       - name: Execute GPT-CMD parser
-        run: python3 scripts/parse_gpt_cmd.py .gptcmd/*.json
+        run: cat .gptcmd/*.json | python3 scripts/parse_gpt_cmd.py
