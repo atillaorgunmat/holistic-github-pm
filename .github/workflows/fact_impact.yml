@@ -1,13 +1,25 @@
-name: Fact Impact Scan
+name: Fact Impact Check
+
 on:
   push:
     paths:
       - 'FactLog.md'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  impact:
+  fact_impact:
     runs-on: ubuntu-latest
     steps:
-      - name: Placeholder
-        run: echo "Fact impact scan stub – to be implemented"
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run fact-impact scan script
+        run: python scripts/scan_fact_impact.py
+          # passes GITHUB_TOKEN & GITHUB_REPOSITORY automatically
