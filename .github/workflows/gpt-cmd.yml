@@ -1,44 +1,33 @@
-name: GPT-CMD Processor
+# File: .github/workflows/gpt-cmd.yml
+
+name: GPT-CMD
 
 on:
   push:
     branches: [ main ]
     paths:
-      - '.gptcmd/directive.json'
+      - '.gptcmd/*.json'
   workflow_dispatch:
-
-permissions:
-  contents: write
 
 jobs:
   execute:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Run Parser
-        run: python3 scripts/parse_gpt_cmd.py < .gptcmd/directive.json
-      
-      - name: Commit directive results (if any) + clean up file
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Stage any edits made by the parser
-          if ! git diff --quiet; then
-            echo "Staging parser modifications..."
-            git add -u
-          fi
-          
-          # Always remove the directive file
-          if [ -f .gptcmd/directive.json ]; then
-            git rm .gptcmd/directive.json
-          fi
-          
-          # Commit if there’s anything staged
-          if ! git diff --cached --quiet; then
-            git commit -m "GPT-CMD: Apply directive & clean up"
-            git push origin main
-          else
-            echo "No file changes to commit."
-          fi
+      # 1. Check out the repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: pip3 install -r requirements.txt
+
+      # 4. Run the parser against all .gptcmd JSONs
+      - name: Execute GPT-CMD parser
+        run: python3 scripts/parse_gpt_cmd.py .gptcmd/*.json
